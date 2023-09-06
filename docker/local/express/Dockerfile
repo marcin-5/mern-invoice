@@ -1,4 +1,4 @@
-ARG NODE_VERSION=20-alpine
+ARG NODE_VERSION=lts-alpine
 
 FROM node:${NODE_VERSION}
 
@@ -17,6 +17,7 @@ RUN addgroup --system invoice \
 
 COPY package*.json ./
 
+RUN npm install -g npm@latest
 RUN npm install 
 
 COPY --chown=invoice:invoice . ${APP_HOME}
