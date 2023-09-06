@@ -22,6 +22,7 @@ services:
       - invoice
 
   client:
+    container_name: client-invoice
     build:
       context: ./client
       dockerfile: ./docker/local/Dockerfile
@@ -33,8 +34,8 @@ services:
       - invoice
 
   mongodb:
-    container_name: mongodb
-    image: mongo:jammy
+    container_name: mongodb-invoice
+    image: mongo:6-jammy
     restart: always
     ports:
       - "27017:27017"
@@ -47,8 +48,8 @@ services:
       - invoice
 
   mongo-express:
-    container_name: mongo-express
-    image: mongo-express:0.54
+    container_name: mongo-express-invoice
+    image: mongo-express:1.0.0-alpha
     depends_on:
       - mongodb
     ports:
