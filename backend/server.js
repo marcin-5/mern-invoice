@@ -6,6 +6,7 @@ import morgan from "morgan";
 import connectionToDB from "./config/connectDB.js";
 import { morganMiddleware, systemLogs } from "./utils/Logger.js";
 import mongoSanitize from "express-mongo-sanitize";
+import { errorHandler, notFound } from "./middleware";
 
 await connectionToDB();
 
@@ -20,6 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(mongoSanitize());
 app.use(morganMiddleware);
+app.use(notFound);
+app.use(errorHandler);
 
 app.get("/api/v1/test", (req, res) => {
   res.json({ Hi: "Welcome in the Invoice App" });
