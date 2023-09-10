@@ -6,7 +6,8 @@ import morgan from "morgan";
 import connectionToDB from "./config/connectDB.js";
 import { morganMiddleware, systemLogs } from "./utils/Logger.js";
 import mongoSanitize from "express-mongo-sanitize";
-import { errorHandler, notFound } from "./middleware";
+import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
+import authRoutes from "./routes/authRoutes.js";
 
 await connectionToDB();
 
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(mongoSanitize());
 app.use(morganMiddleware);
+app.use("/api/v1/auth", authRoutes);
 app.use(notFound);
 app.use(errorHandler);
 

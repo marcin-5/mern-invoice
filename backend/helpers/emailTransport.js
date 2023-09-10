@@ -1,6 +1,5 @@
 import "dotenv/config";
 import nodemiler from "nodemailer";
-import { transport } from "winston";
 
 let transporter;
 if (process.env.NODE_ENV === "development") {

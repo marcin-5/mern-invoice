@@ -75,10 +75,11 @@ const userSchema = new Schema(
     phoneNumber: {
       type: String,
       default: "+48123456789",
-      validate: [
-        validator.isMobilePhone,
-        "Your mobile phone number must starts with a '+', followed by country code then actual number e.g. +48123456789",
-      ],
+      // FIXME
+      // validate: [
+      //   validator.isMobilePhone,
+      //   "Your mobile phone number must starts with a '+', followed by country code then actual number e.g. +48123456789",
+      // ],
     },
     address: String,
     city: String,
