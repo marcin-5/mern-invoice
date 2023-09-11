@@ -8,6 +8,8 @@ import { morganMiddleware, systemLogs } from "./utils/Logger.js";
 import mongoSanitize from "express-mongo-sanitize";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import { apiLimiter } from "./middleware/apiLimiter.js";
 
 await connectionToDB();
 
@@ -23,6 +25,7 @@ app.use(cookieParser());
 app.use(mongoSanitize());
 app.use(morganMiddleware);
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/user", apiLimiter, userRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
