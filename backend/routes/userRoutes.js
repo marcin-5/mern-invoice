@@ -1,5 +1,6 @@
 import express from "express";
 import deleteMyAccount from "../controllers/user/deleteMyAccount.js";
+import deleteUserAccount from "../controllers/user/deleteUserAccount.js";
 import getAllUserAccounts from "../controllers/user/getAllUserAccounts.js";
 import getUserProfile from "../controllers/user/getUserProfile.js";
 import updateUserProfile from "../controllers/user/updateUserProfile.js";
@@ -16,5 +17,9 @@ router
 router
   .route("/all")
   .get(checkAuth, role.checkRole(role.ROLES.Admin), getAllUserAccounts);
+
+router
+  .route("/:id")
+  .delete(checkAuth, role.checkRole(role.ROLES.Admin), deleteUserAccount);
 
 export default router;
