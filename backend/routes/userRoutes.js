@@ -1,4 +1,5 @@
 import express from "express";
+import deactivateUser from "../controllers/user/deactivateUser.js";
 import deleteMyAccount from "../controllers/user/deleteMyAccount.js";
 import deleteUserAccount from "../controllers/user/deleteUserAccount.js";
 import getAllUserAccounts from "../controllers/user/getAllUserAccounts.js";
@@ -21,5 +22,9 @@ router
 router
   .route("/:id")
   .delete(checkAuth, role.checkRole(role.ROLES.Admin), deleteUserAccount);
+
+router
+  .route("/:id/deactivate")
+  .patch(checkAuth, role.checkRole(role.ROLES.Admin), deactivateUser);
 
 export default router;
