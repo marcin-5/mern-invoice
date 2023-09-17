@@ -3,7 +3,7 @@ import { FaMoneyBillWave } from "react-icons/fa";
 
 function Copyright() {
   return (
-    <Typography variant="body2" align="center" sx={{ color: "#fffdfd" }}>
+    <Typography variant="body2" align="center" sx={{ color: "#fafffa" }}>
       {"Copyright ©"} MERN Invoice {new Date().getFullYear()}
     </Typography>
   );
@@ -23,9 +23,8 @@ export const Footer = () => {
           component="p"
           sx={{ color: "#07f011" }}
         >
-          <FaMoneyBillWave>
-            Because Money is as important as oxygen{" "}
-          </FaMoneyBillWave>
+          <FaMoneyBillWave /> Because Money is as important as oxygen{" "}
+          <FaMoneyBillWave />
         </Typography>
         <Copyright />
       </Box>
