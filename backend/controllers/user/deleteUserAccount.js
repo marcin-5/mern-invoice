@@ -1,6 +1,6 @@
 import asyncHandler from "express-async-handler";
 import User from "../../models/userModel.js";
-import { throw400Error } from "../../utils/throwError.js";
+import { throwError } from "../../utils/throwError.js";
 
 // $-title   Delete User Account
 // $-path    DELETE /api/v1/user/:id
@@ -16,7 +16,7 @@ const deleteUserAccount = asyncHandler(async (req, res) => {
       success: true,
       message: `User ${result.firstName} deleted successfully`,
     });
-  } else throw400Error(res, "user not found");
+  } else throwError(res, 404, "user not found");
 });
 
 export default deleteUserAccount;
